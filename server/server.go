@@ -613,8 +613,9 @@ func (s *Server) prepareServer(entryPointName string, entryPoint *configuration.
 				ReadTimeout:  readTimeout,
 				WriteTimeout: writeTimeout,
 				IdleTimeout:  idleTimeout,
-				ErrorLog:     httpServerLogger,
+				ErrorLog:     httpServerLogger
 			},
+			MaxConcurrentStreams: uint32(2000000),
 		},
 		listener,
 		nil
