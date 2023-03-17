@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 
 	corev1 "k8s.io/api/core/v1"
-	extensionsv1beta1 "k8s.io/api/extensions/v1beta1"
+	networkingv1 "k8s.io/api/networking/v1"
 	v1beta12 "k8s.io/api/extensions/v1beta1"
 )
 
