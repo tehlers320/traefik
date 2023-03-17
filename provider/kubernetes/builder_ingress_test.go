@@ -147,10 +147,11 @@ func TestBuildIngress(t *testing.T) {
 				onePath(iPath("/bar"), iBackend("service1", networkingv1.ServiceBackendPort{Number: 80})),
 				onePath(iPath("/namedthing"), iBackend("service4", networkingv1.ServiceBackendPort{Name: "https"})),
 			),
-				iRule(iHost("bar"), iPaths(
-					onePath(iBackend("service3",  networkingv1.ServiceBackendPort{Name: "https"})),
-					onePath(iBackend("service2",  networkingv1.ServiceBackendPort{Number: 802})),
-				),
+			),
+			iRule(iHost("bar"), iPaths(
+				onePath(iBackend("service3", networkingv1.ServiceBackendPort{Name: "https"})),
+				onePath(iBackend("service2", networkingv1.ServiceBackendPort{Number: 802})),
+			),
 			),
 		),
 		iTLSes(
