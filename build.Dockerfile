@@ -1,12 +1,12 @@
-FROM golang:1.16-alpine
+FROM golang:1.19-alpine
 
 RUN apk --update upgrade \
     && apk --no-cache --no-progress add git mercurial bash gcc musl-dev curl tar ca-certificates tzdata \
     && update-ca-certificates \
     && rm -rf /var/cache/apk/*
 
-RUN go get golang.org/x/lint/golint \
-&& go get github.com/client9/misspell/cmd/misspell
+RUN go install golang.org/x/lint/golint@latest \
+&& go install github.com/client9/misspell/cmd/misspell@latest
 
 # Which docker version to test on
 ARG DOCKER_VERSION=18.09.7
@@ -22,7 +22,7 @@ RUN mkdir -p /usr/local/bin \
     && chmod +x /usr/local/bin/go-bindata
 
 # Download misspell binary to bin folder in $GOPATH
-RUN  curl -sfL https://raw.githubusercontent.com/client9/misspell/master/install-misspell.sh | bash -s -- -b $GOPATH/bin v0.3.4
+#RUN  curl -sfL https://raw.githubusercontent.com/client9/misspell/master/install-misspell.sh | bash -s -- -b $GOPATH/bin v0.3.4
 
 WORKDIR /go/src/github.com/traefik/traefik
 

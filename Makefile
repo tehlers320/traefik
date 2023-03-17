@@ -136,8 +136,7 @@ dist:
 run-dev:
 	go generate
 	go build ./cmd/traefik
-	./traefik
-
+	./traefik --configfile=traefik.toml
 generate-webui: build-webui
 	if [ ! -d "static" ]; then \
 		mkdir -p static; \
